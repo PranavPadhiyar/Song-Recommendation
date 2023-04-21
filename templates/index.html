@@ -36,11 +36,12 @@
     </script>
   </head>
   <body style='background-image:url("static/images/background.jpg")'>
+    <header>
+      <img src="static/images/header.jpg" style="max-width: 100%;">
+    </header>
     <div class="half-screen left-half" id="left-half">
       <div class="container">
-        <header>
-          <img src="static/images/header.jpg" style="max-width: 100%;">
-        </header>
+        
         <ul id="selected-songs"></ul>
         <div class="song-search" id="song-search-form">
           <img src="static/images/play-icon.png" style="display: none;">
@@ -110,17 +111,17 @@
         </div>
         <div id="animationWindow" style="display: none;"></div>
       </div>
-      <div id="div-recommendations">
-        <h1 id="h1-recommendations"></h1>
-        <div id="div-songs-recommendations">
-          <ul id="song-recommendations-list"></ul>
-        </div>
-      </div>
   </div>
-  <div class="half-screen right-half" id="right-half"></div>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.9/lottie.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <div class="half-screen right-half" id="right-half">
+    <div id="div-recommendations">
+      <h1 id="h1-recommendations"></h1>
+      <div id="div-songs-recommendations">
+        <ul id="song-recommendations-list"></ul>
+      </div>
+    </div>
+  </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.9/lottie.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script src="{{ url_for('static', filename='script.js') }}"></script>
   </body>
 </html>
