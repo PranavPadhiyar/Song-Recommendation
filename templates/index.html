@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>SongSensei</title>
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+      function getVals(){
+        // Get slider values
+        var parent = this.parentNode;
+        var slides = parent.getElementsByTagName("input");
+          var slide1 = parseFloat( slides[0].value );
+          var slide2 = parseFloat( slides[1].value );
+        // Neither slider will clip the other, so make sure we determine which is larger
+        if( slide1 > slide2 ){ var tmp = slide2; slide2 = slide1; slide1 = tmp; }
+        
+        var displayElement = document.getElementsByClassName("rangeValues")[0];
+        displayElement.innerHTML = slide1 + " - " + slide2;
+      }
+      
+      window.onload = function(){
+        // Initialize Sliders
+        var sliderSections = document.getElementsByClassName("range-slider");
+            for( var x = 0; x < sliderSections.length; x++ ){
+              var sliders = sliderSections[x].getElementsByTagName("input");
+              for( var y = 0; y < sliders.length; y++ ){
+                if( sliders[y].type ==="range" ){
+                  sliders[y].oninput = getVals;
+                  // Manually trigger event first time to display values
+                  sliders[y].oninput();
+                }
+              }
+            }
+      }
+    </script>
+  </head>
+  <body style='background-image:url("static/images/background.jpg")'>
+    <div class="half-screen left-half" id="left-half">
+      <div class="container">
+        <header>
+          <img src="static/images/header.jpg" style="max-width: 100%;">
+        </header>
+        <ul id="selected-songs"></ul>
+        <div class="song-search" id="song-search-form">
+          <img src="static/images/play-icon.png" style="display: none;">
+          <img src="static/images/header.jpg" style="display: none;">
+          <img src="static/images/background2.jpg" style="display: none;">
+          <input type="text" name="song" class="form-control" id="song-name-input" placeholder="What's your vibe?">
+          <button type="button" class="search-button" id="song-name-button">Search</button>
+        </div>
+        <ul id="searched-songs"></ul>
+        <button class="advanced-search-button" id="advanced-search-button">Advanced Search</button>
+        <div id="advanced-search">
+          <div id="advancedSearchOptions" style="display:none;margin-bottom:20px;">
+            <div class="filter-table">
+              <div class="filter-row">
+                <div class="filter-text">Explicit</div>
+                <div class="filter-element">
+                  <!-- HTML element for Explicit filter -->
+                  <label class="switch">
+                    <input type="checkbox" name="explicit" id="explicit">
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+              </div>
+              <div class="filter-row">
+                <div class="filter-text">Year</div>
+                <div class="filter-element" >
+                  <div class="rangeValues" id="range-values">1920 - 2020</div>
+                  <section class="range-slider">
+                    <input value="2020" min="1940" max="2020" step="20" type="range">
+                    <input value="1920" min="1920" max="2000" step="20" type="range">
+                  </section>
+                </div>
+              </div>
+              <div class="filter-row">
+                <div class="filter-text">Tempo</div>
+                <div class="filter-element">
+                  <div class="slidecontainer">
+                    <input type="range" min="1" max="3" value="2" step="1" class="tempo-slider" id="tempo-slider">
+                    <div class="tempo-slider-labels">
+                      <span id="slow" style="text-shadow:none">Slow</span>
+                      <span id="medium" style="text-shadow:none">Medium</span>
+                      <span id="fast" style="text-shadow:none">Fast</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="filter-row">
+                <div class="filter-text">Ambience</div>
+                <div class="filter-element">
+                  <div class="slidecontainer">
+                    <input type="range" min="1" max="5" value="3" step="1" class="tempo-slider" id="mood-slider">
+                    <div class="mood-slider-labels">
+                      <span id="focus">Focus</span>
+                      <span id="study">Study</span>
+                      <span id="neutral">Neutral</span>
+                      <span id="happy">Happy</span>
+                      <span id="party">Party</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="get-recommendations-div">
+          <button id="get-recommendations-button" type="submit" class="btn btn-primary" disabled >Get Recommendations</button>
+        </div>
+        <div id="animationWindow" style="display: none;"></div>
+      </div>
+      <div id="div-recommendations">
+        <h1 id="h1-recommendations"></h1>
+        <div id="div-songs-recommendations">
+          <ul id="song-recommendations-list"></ul>
+        </div>
+      </div>
+  </div>
+  <div class="half-screen right-half" id="right-half"></div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.9/lottie.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
