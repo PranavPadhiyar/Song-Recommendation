@@ -39,7 +39,6 @@ body {
   .right-half {
     float: left;
     height: 100vh;
-    margin-top: 1000px;
     transition-property: width;
     transition-duration: 2s;
     width: 0%;
