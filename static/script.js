@@ -235,6 +235,21 @@ $(document).ready(function() {
 
       colorElement.setAttribute('stroke', 'rgb(0,166,81)')
       anotherColorElement.setAttribute('fill', 'rgb(0,166,81)')
+      
+      const songSearchForm = document.getElementById("song-search-form");
+      songSearchForm.classList.add('fade-out');
+
+      const advancedSearchButton = document.getElementById("advanced-search-button");
+      advancedSearchButton.classList.add('fade-out');
+      
+      const searchSongsList = document.getElementById("searched-songs");
+
+      const advancedSearchForm = document.getElementById("advanced-search");
+      advancedSearchForm.classList.add('fade-out');
+
+      songSearchForm.remove();
+      searchSongsList.remove();
+      advancedSearchButton.remove();
 
       $.ajax({
         type: "POST",
@@ -248,13 +263,17 @@ $(document).ready(function() {
         },
         success: function(response) {
 
+          const recHeading = document.getElementById('h1-recommendations');
+          recHeading.textContent = "Recommended Songs for you";
           console.log(response);
           left_half.classList.add("addedclass");
           right_half.classList.add("addedclass");
           console.log(animationWindowElement.style.display)
           animationWindowElement.style.display = 'none';
           console.log(animationWindowElement.style.display)
- 
+          
+          animationWindowElement.classList.add('fade-out')
+
           recommendationsList = document.getElementById("song-recommendations-list");
 
           response.forEach(song => {
@@ -283,9 +302,7 @@ $(document).ready(function() {
             li.addEventListener('click', function(e) {
               window.location.href = song.url;
             })
-            recommendationsList.appendChild(li);
-            
-            recommendations_div.innerHTML = "<h2>Recommended Songs for you</h2>"
+            recommendationsList.appendChild(li);            
           });
         }
       });

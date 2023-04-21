@@ -5,6 +5,7 @@ body {
     color: #FFF;
     font-family: 'Poppins' !important;
     min-height: 100vh;
+    max-height: 100vh;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -36,16 +37,26 @@ body {
   .left-half.addedclass {
       width:50%;
   }
+
+  #h1-recommendations {
+    margin-top: 200px;
+    width: 600px;
+    text-align: center;
+  }
+
+  #song-recommendations-list {
+    margin-top: 20px;
+  }
   .right-half {
     float: left;
     height: 100vh;
     transition-property: width;
     transition-duration: 2s;
     width: 0%;
-    background-color: #ccc; /* set background color of right half */
   }
   .rgiht-half.addedclass {
       width:50%;
+      margin-left: 50%;
   }
   .center {
     display: flex;
@@ -56,8 +67,23 @@ body {
   #animationWindow {
     width: 250px;
     height: 250px;
+    opacity: 1;
+    transition: opacity 1s ease-out;
    }
-  
+
+  #animationWindow.fade-out {
+    opacity: 0;
+  }
+
+  #advanced-search-button {
+    opacity: 1;
+    transition: opacity 1s ease-out;
+  }
+  #advanced-search-button.fade-out {
+    opacity: 0;
+  }
+
+
   h1 {
     margin: 0;
     color: white;
@@ -102,6 +128,24 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  #song-search-form {
+    opacity: 1;
+    transition: opacity 1s ease-out;
+  }
+
+  #song-search-form.fade-out {
+    opacity: 0;
+  }
+
+  #advanced-search {
+    opacity: 1;
+    transition: opacity 1s ease-out;
+  }
+
+  #advanced-search.fade-out {
+    opacity: 0;
   }
 
   .song-search {
@@ -204,7 +248,7 @@ body {
     flex-direction: row; /* Make the children align horizontally */
     align-items: center;
     justify-content: flex-start; /* Align the children to the left */
-    min-width: 500px; /* Set the minimum width to 0 to allow shrinking */
+    min-width: 600px; /* Set the minimum width to 0 to allow shrinking */
     width: 100%; /* Set the width to 100% to fill the parent element */
     background-color: #fff;
     border: 3px solid #303030;
