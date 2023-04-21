@@ -412,16 +412,6 @@ body {
   margin-top: 20px;
 }
 
-
-.mood-slider-labels {
-  position: relative;
-  left: 60px;
-  width: 300px;
-  gap: 15px;
-  display: flex;
-  margin-top: 20px;
-}
-
 .slidecontainer {
   text-align: right;
 }
@@ -458,14 +448,6 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
-}
-
-.mood-slider-labels span {
-  font-size: 14px;
-  font-weight: bold;
-  color: #e7e7e7;
-  flex-grow: 1;
-  text-align: center;
 }
 
 .tempo-slider-labels span {

@@ -28,22 +28,6 @@ $(document).ready(function() {
     });
   });
 
-
-  const mood_slider = document.getElementById("mood-slider");
-  const focus = document.getElementById('focus');
-  const study = document.getElementById('study');
-  const neutral = document.getElementById('neutral');
-  const happy = document.getElementById('happy');
-  const party = document.getElementById('party');
-
-  mood_slider.addEventListener("input", function() {
-    const value = mood_slider.value;
-    const moodValues = ['focus', 'study', 'neutral', 'happy', 'party'];
-    const colorValues = []
-    
-    
-  });
-
   const tempo_slider = document.getElementById("tempo-slider");
   const slowLabel = document.getElementById("slow");
   const mediumLabel = document.getElementById("medium");
@@ -199,7 +183,7 @@ $(document).ready(function() {
       console.log(advancedSearchOptions.style.display);
       
       explicit = 'false'
-      startYear = endYear = tempo = mood = "None"
+      startYear = endYear = tempo = "None"
       
       if (advancedSearchOptions.style.display === "block") {
         explicit = document.getElementById('explicit').checked;
@@ -213,13 +197,11 @@ $(document).ready(function() {
         tempo = document.getElementById('tempo-slider').value
         console.log(tempo);
 
-        mood = document.getElementById('mood-slider').value
-        console.log(mood);
-        filters = { 'explicit': explicit, 'startYear': startYear, 'endYear': endYear,'tempo':  tempo, 'mood': mood}
+        filters = { 'explicit': explicit, 'startYear': startYear, 'endYear': endYear,'tempo':  tempo}
         console.log(filters);
       }
 
-      console.log('Explicit: ', explicit, ' Year ', startYear, endYear, ' Tempo: ', tempo, ' Mood: ', mood);
+      console.log('Explicit: ', explicit, ' Year ', startYear, endYear, ' Tempo: ', tempo);
 
       recommendations_div = document.getElementById('get-recommendations-div');
       animationWindowElement = document.getElementById('animationWindow');
@@ -259,7 +241,6 @@ $(document).ready(function() {
           startYear: startYear,
           endYear: endYear,
           tempo: tempo,
-          mood: mood
         },
         success: function(response) {
 
