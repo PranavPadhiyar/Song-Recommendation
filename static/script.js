@@ -198,7 +198,8 @@ $(document).ready(function() {
       var advancedSearchOptions = document.getElementById("advancedSearchOptions");
       console.log(advancedSearchOptions.style.display);
       
-      explicit = startYear = endYear = tempo = mood = "None"
+      explicit = 'false'
+      startYear = endYear = tempo = mood = "None"
       
       if (advancedSearchOptions.style.display === "block") {
         explicit = document.getElementById('explicit').checked;
@@ -223,7 +224,7 @@ $(document).ready(function() {
       recommendations_div = document.getElementById('get-recommendations-div');
       animationWindowElement = document.getElementById('animationWindow');
       left_half = document.getElementById('left-half')
-      right_half = document.getElementById('right_half')
+      right_half = document.getElementById('right-half')
       recommendations_div.innerHTML = '';
       console.log(animationWindowElement.style.display)
       animationWindowElement.style.display = 'block';
@@ -249,8 +250,10 @@ $(document).ready(function() {
 
           console.log(response);
           left_half.classList.add("addedclass");
-          right_halfclassList.add("addedclass");
+          right_half.classList.add("addedclass");
+          console.log(animationWindowElement.style.display)
           animationWindowElement.style.display = 'none';
+          console.log(animationWindowElement.style.display)
  
           recommendationsList = document.getElementById("song-recommendations-list");
 
